@@ -1,0 +1,41 @@
+@using Soenneker.Quark.Buttons
+@using Soenneker.Quark.Enums.ButtonTypes
+@using Soenneker.Quark.Divs
+@using Microsoft.AspNetCore.Components.Web
+@inherits Soenneker.Quark.Components.Element
+
+<Div @attributes="BuildAttributes()">
+    @if (Title is not null)
+    {
+        <h5 class="offcanvas-title">@Title</h5>
+    }
+    @ChildContent
+    @if (ShowCloseButton)
+    {
+        <Button Type="@ButtonType.Button" Class="btn-close" OnClick="HandleClose"></Button>
+    }
+    
+</Div>
+
+@code {
+    [Parameter]
+    public bool ShowCloseButton { get; set; } = true;
+
+    [CascadingParameter]
+    public OffcanvasPanel? ParentOffcanvas { get; set; }
+
+    protected override Dictionary<string, object> BuildAttributes()
+    {
+        Dictionary<string, object> attrs = base.BuildAttributes();
+        AppendToClassAttr(attrs, "offcanvas-header");
+        return attrs;
+    }
+
+    private async Task HandleClose(MouseEventArgs args)
+    {
+        if (ParentOffcanvas is not null)
+            await ParentOffcanvas.RequestClose();
+    }
+}
+
+

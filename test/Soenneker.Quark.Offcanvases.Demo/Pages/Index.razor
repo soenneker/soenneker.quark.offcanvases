@@ -1,0 +1,88 @@
+@page "/"
+@using Soenneker.Quark.Buttons
+@using Soenneker.Quark.Enums.ButtonTypes
+@using Soenneker.Quark.Enums.Placements
+@using Soenneker.Quark.Offcanvases
+
+<PageTitle>Offcanvas</PageTitle>
+
+<div class="container py-4">
+    <h1 class="h4 mb-3">Offcanvas demo</h1>
+    <div class="mb-3">
+        <Button Type="@ButtonType.Button" Class="btn btn-primary me-2" OnClick="() => Open(Placement.Start)">Open Left</Button>
+        <Button Type="@ButtonType.Button" Class="btn btn-primary me-2" OnClick="() => Open(Placement.End)">Open Right</Button>
+        <Button Type="@ButtonType.Button" Class="btn btn-secondary me-2" OnClick="() => Open(Placement.Top)">Open Top</Button>
+        <Button Type="@ButtonType.Button" Class="btn btn-secondary" OnClick="() => Open(Placement.Bottom)">Open Bottom</Button>
+    </div>
+</div>
+
+<OffcanvasPanel @ref="_left" Placement="@Placement.Start" ShowBackdrop="true">
+    <OffcanvasHeader Title="Left panel" />
+    <OffcanvasBody>
+        <p class="mb-3">This is the left offcanvas content.</p>
+        <Button Type="@ButtonType.Button" Class="btn btn-outline-secondary" OnClick="CloseLeft">Close</Button>
+    </OffcanvasBody>
+</OffcanvasPanel>
+
+<OffcanvasPanel @ref="_right" Placement="@Placement.End" ShowBackdrop="true">
+    <OffcanvasHeader Title="Right panel" />
+    <OffcanvasBody>
+        <p class="mb-3">This is the right offcanvas content.</p>
+        <Button Type="@ButtonType.Button" Class="btn btn-outline-secondary" OnClick="CloseRight">Close</Button>
+    </OffcanvasBody>
+</OffcanvasPanel>
+
+<OffcanvasPanel @ref="_top" Placement="@Placement.Top" ShowBackdrop="true">
+    <OffcanvasHeader Title="Top panel" />
+    <OffcanvasBody>
+        <p class="mb-3">This is the top offcanvas content.</p>
+        <Button Type="@ButtonType.Button" Class="btn btn-outline-secondary" OnClick="CloseTop">Close</Button>
+    </OffcanvasBody>
+</OffcanvasPanel>
+
+<OffcanvasPanel @ref="_bottom" Placement="@Placement.Bottom" ShowBackdrop="true">
+    <OffcanvasHeader Title="Bottom panel" />
+    <OffcanvasBody>
+        <p class="mb-3">This is the bottom offcanvas content.</p>
+        <Button Type="@ButtonType.Button" Class="btn btn-outline-secondary" OnClick="CloseBottom">Close</Button>
+    </OffcanvasBody>
+</OffcanvasPanel>
+
+@code {
+    private OffcanvasPanel? _left;
+    private OffcanvasPanel? _right;
+    private OffcanvasPanel? _top;
+    private OffcanvasPanel? _bottom;
+
+    private async Task Open(Placement placement)
+    {
+        await HideAll();
+
+        OffcanvasPanel? panel = placement.Value switch
+        {
+            Placement.StartValue => _left,
+            Placement.EndValue => _right,
+            Placement.TopValue => _top,
+            Placement.BottomValue => _bottom,
+            _ => null
+        };
+
+        if (panel is not null)
+            await panel.Show();
+    }
+
+    private Task HideAll()
+    {
+        return Task.WhenAll(
+            _left?.Hide() ?? Task.CompletedTask,
+            _right?.Hide() ?? Task.CompletedTask,
+            _top?.Hide() ?? Task.CompletedTask,
+            _bottom?.Hide() ?? Task.CompletedTask
+        );
+    }
+
+    private Task CloseLeft() => _left?.Hide() ?? Task.CompletedTask;
+    private Task CloseRight() => _right?.Hide() ?? Task.CompletedTask;
+    private Task CloseTop() => _top?.Hide() ?? Task.CompletedTask;
+    private Task CloseBottom() => _bottom?.Hide() ?? Task.CompletedTask;
+}
