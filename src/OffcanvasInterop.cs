@@ -2,7 +2,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.JSInterop;
 using Soenneker.Blazor.Utils.ResourceLoader.Abstract;
-using Soenneker.Quark.Offcanvases.Abstract;
 using Soenneker.Utils.AsyncSingleton;
 
 namespace Soenneker.Quark;
