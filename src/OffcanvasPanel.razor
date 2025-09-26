@@ -1,9 +1,7 @@
-@using Soenneker.Quark.Offcanvases.Abstract
 @using System.Threading
-@using Soenneker.Quark.Divs
 @using Microsoft.AspNetCore.Components.Web
 @using Soenneker.Blazor.Extensions.EventCallback
-@using Soenneker.Quark.Enums.Placements
+@using Soenneker.Quark.Enums
 
 @inherits Soenneker.Quark.Element
 @inject IOffcanvasInterop OffcanvasInterop
@@ -19,6 +17,8 @@
 </CascadingValue>
 
 @code {
+	public override string? Name { get; set; } = "OffcanvasPanel";
+
     private static readonly TimeSpan _transitionDuration = TimeSpan.FromMilliseconds(350);
 
     [Parameter] public Placement Placement { get; set; } = Placement.End;

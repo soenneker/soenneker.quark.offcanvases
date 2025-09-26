@@ -4,7 +4,6 @@ using Serilog;
 using Soenneker.Fixtures.Unit;
 using Soenneker.Utils.Test;
 using Soenneker.Blazor.MockJsRuntime.Registrars;
-using Soenneker.Quark.Offcanvases.Registrars;
 
 namespace Soenneker.Quark.Offcanvases.Tests;
 

@@ -8,7 +8,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.JSInterop;
 using Serilog;
 using Serilog.Debugging;
-using Soenneker.Quark.Offcanvases.Registrars;
 using Soenneker.Serilog.Sinks.Browser.Blazor.Registrars;
 using Soenneker.Quark;
 
