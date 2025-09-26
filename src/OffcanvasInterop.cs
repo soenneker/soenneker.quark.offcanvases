@@ -5,7 +5,7 @@ using Soenneker.Blazor.Utils.ResourceLoader.Abstract;
 using Soenneker.Quark.Offcanvases.Abstract;
 using Soenneker.Utils.AsyncSingleton;
 
-namespace Soenneker.Quark.Offcanvases;
+namespace Soenneker.Quark;
 
 /// <summary>
 /// JS interop wrapper for Offcanvas overlay management.

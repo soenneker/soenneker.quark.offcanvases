@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Soenneker.Quark.Offcanvases.Abstract;
+namespace Soenneker.Quark;
 
 /// <summary>
 /// Contract for JS interop that manages offcanvas overlays (body lock/backdrop) with global overlay counting.
