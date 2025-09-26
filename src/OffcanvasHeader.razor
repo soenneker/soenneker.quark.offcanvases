@@ -22,7 +22,7 @@
     public bool ShowCloseButton { get; set; } = true;
 
     [CascadingParameter]
-    public OffcanvasPanel? ParentOffcanvas { get; set; }
+    public Offcanvas? ParentOffcanvas { get; set; }
 
     protected override Dictionary<string, object> BuildAttributes()
     {

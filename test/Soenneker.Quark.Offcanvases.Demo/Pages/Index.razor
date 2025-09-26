@@ -13,49 +13,49 @@
     </div>
 </div>
 
-<OffcanvasPanel @ref="_left" Placement="@Placement.Start" ShowBackdrop="true">
+<Offcanvas @ref="_left" Placement="@Placement.Start" ShowBackdrop="true">
     <OffcanvasHeader Title="Left panel" />
     <OffcanvasBody>
         <p class="mb-3">This is the left offcanvas content.</p>
         <Button Type="@ButtonType.Button" Class="btn btn-outline-secondary" OnClick="CloseLeft">Close</Button>
     </OffcanvasBody>
-</OffcanvasPanel>
+</Offcanvas>
 
-<OffcanvasPanel @ref="_right" Placement="@Placement.End" ShowBackdrop="true">
+<Offcanvas @ref="_right" Placement="@Placement.End" ShowBackdrop="true">
     <OffcanvasHeader Title="Right panel" />
     <OffcanvasBody>
         <p class="mb-3">This is the right offcanvas content.</p>
         <Button Type="@ButtonType.Button" Class="btn btn-outline-secondary" OnClick="CloseRight">Close</Button>
     </OffcanvasBody>
-</OffcanvasPanel>
+</Offcanvas>
 
-<OffcanvasPanel @ref="_top" Placement="@Placement.Top" ShowBackdrop="true">
+<Offcanvas @ref="_top" Placement="@Placement.Top" ShowBackdrop="true">
     <OffcanvasHeader Title="Top panel" />
     <OffcanvasBody>
         <p class="mb-3">This is the top offcanvas content.</p>
         <Button Type="@ButtonType.Button" Class="btn btn-outline-secondary" OnClick="CloseTop">Close</Button>
     </OffcanvasBody>
-</OffcanvasPanel>
+</Offcanvas>
 
-<OffcanvasPanel @ref="_bottom" Placement="@Placement.Bottom" ShowBackdrop="true">
+<Offcanvas @ref="_bottom" Placement="@Placement.Bottom" ShowBackdrop="true">
     <OffcanvasHeader Title="Bottom panel" />
     <OffcanvasBody>
         <p class="mb-3">This is the bottom offcanvas content.</p>
         <Button Type="@ButtonType.Button" Class="btn btn-outline-secondary" OnClick="CloseBottom">Close</Button>
     </OffcanvasBody>
-</OffcanvasPanel>
+</Offcanvas>
 
 @code {
-    private OffcanvasPanel? _left;
-    private OffcanvasPanel? _right;
-    private OffcanvasPanel? _top;
-    private OffcanvasPanel? _bottom;
+    private Offcanvas? _left;
+    private Offcanvas? _right;
+    private Offcanvas? _top;
+    private Offcanvas? _bottom;
 
     private async Task Open(Placement placement)
     {
         await HideAll();
 
-        OffcanvasPanel? panel = placement.Value switch
+        Offcanvas? panel = placement.Value switch
         {
             Placement.StartValue => _left,
             Placement.EndValue => _right,

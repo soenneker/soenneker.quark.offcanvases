@@ -17,7 +17,7 @@
 </CascadingValue>
 
 @code {
-	public override string? Name { get; set; } = "OffcanvasPanel";
+	public override string? Name { get; set; } = "Offcanvas";
 
     private static readonly TimeSpan _transitionDuration = TimeSpan.FromMilliseconds(350);
 
@@ -218,7 +218,7 @@
         await callback.InvokeIfHasDelegate();
     }
 
-    public async ValueTask DisposeAsync()
+    public override async ValueTask DisposeAsync()
     {
         try
         {
