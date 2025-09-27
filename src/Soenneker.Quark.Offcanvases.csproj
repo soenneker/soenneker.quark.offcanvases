@@ -44,7 +44,7 @@
 
     <ItemGroup>
         <PackageReference Include="Soenneker.Blazor.Utils.ResourceLoader" Version="3.0.1503" />
-        <PackageReference Include="Soenneker.Quark.Components.Cancellable" Version="3.0.36" />
+        <PackageReference Include="Soenneker.Quark.Components.Cancellable" Version="3.0.37" />
         <PackageReference Include="Soenneker.Quark.Divs" Version="3.0.21" />
         <PackageReference Include="Soenneker.Quark.Buttons" Version="3.0.38" />
         <PackageReference Include="Soenneker.Quark.Enums.Placements" Version="3.0.4" />
