@@ -6,14 +6,14 @@
 <div class="container py-4">
     <h1 class="h4 mb-3">Offcanvas demo</h1>
     <div class="mb-3">
-        <Button Type="@ButtonType.Button" Class="btn btn-primary me-2" OnClick="() => Open(Placement.Start)">Open Left</Button>
-        <Button Type="@ButtonType.Button" Class="btn btn-primary me-2" OnClick="() => Open(Placement.End)">Open Right</Button>
-        <Button Type="@ButtonType.Button" Class="btn btn-secondary me-2" OnClick="() => Open(Placement.Top)">Open Top</Button>
-        <Button Type="@ButtonType.Button" Class="btn btn-secondary" OnClick="() => Open(Placement.Bottom)">Open Bottom</Button>
+        <Button Type="@ButtonType.Button" Class="btn btn-primary me-2" OnClick="() => Open(PlacementType.Start)">Open Left</Button>
+        <Button Type="@ButtonType.Button" Class="btn btn-primary me-2" OnClick="() => Open(PlacementType.End)">Open Right</Button>
+        <Button Type="@ButtonType.Button" Class="btn btn-secondary me-2" OnClick="() => Open(PlacementType.Top)">Open Top</Button>
+        <Button Type="@ButtonType.Button" Class="btn btn-secondary" OnClick="() => Open(PlacementType.Bottom)">Open Bottom</Button>
     </div>
 </div>
 
-<Offcanvas @ref="_left" Placement="@Placement.Start" ShowBackdrop="true">
+<Offcanvas @ref="_left" Placement="@PlacementType.Start" ShowBackdrop="true">
     <OffcanvasHeader Title="Left panel" />
     <OffcanvasBody>
         <p class="mb-3">This is the left offcanvas content.</p>
@@ -21,7 +21,7 @@
     </OffcanvasBody>
 </Offcanvas>
 
-<Offcanvas @ref="_right" Placement="@Placement.End" ShowBackdrop="true">
+<Offcanvas @ref="_right" Placement="@PlacementType.End" ShowBackdrop="true">
     <OffcanvasHeader Title="Right panel" />
     <OffcanvasBody>
         <p class="mb-3">This is the right offcanvas content.</p>
@@ -29,7 +29,7 @@
     </OffcanvasBody>
 </Offcanvas>
 
-<Offcanvas @ref="_top" Placement="@Placement.Top" ShowBackdrop="true">
+<Offcanvas @ref="_top" Placement="@PlacementType.Top" ShowBackdrop="true">
     <OffcanvasHeader Title="Top panel" />
     <OffcanvasBody>
         <p class="mb-3">This is the top offcanvas content.</p>
@@ -37,7 +37,7 @@
     </OffcanvasBody>
 </Offcanvas>
 
-<Offcanvas @ref="_bottom" Placement="@Placement.Bottom" ShowBackdrop="true">
+<Offcanvas @ref="_bottom" Placement="@PlacementType.Bottom" ShowBackdrop="true">
     <OffcanvasHeader Title="Bottom panel" />
     <OffcanvasBody>
         <p class="mb-3">This is the bottom offcanvas content.</p>
@@ -51,16 +51,16 @@
     private Offcanvas? _top;
     private Offcanvas? _bottom;
 
-    private async Task Open(Placement placement)
+    private async Task Open(PlacementType placement)
     {
         await HideAll();
 
         Offcanvas? panel = placement.Value switch
         {
-            Placement.StartValue => _left,
-            Placement.EndValue => _right,
-            Placement.TopValue => _top,
-            Placement.BottomValue => _bottom,
+            PlacementType.StartValue => _left,
+            PlacementType.EndValue => _right,
+            PlacementType.TopValue => _top,
+            PlacementType.BottomValue => _bottom,
             _ => null
         };
 

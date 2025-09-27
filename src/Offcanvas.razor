@@ -21,7 +21,7 @@
 
     private static readonly TimeSpan _transitionDuration = TimeSpan.FromMilliseconds(350);
 
-    [Parameter] public Placement Placement { get; set; } = Placement.End;
+    [Parameter] public PlacementType Placement { get; set; } = PlacementType.End;
     [Parameter] public bool AllowScroll { get; set; }
     [Parameter] public bool ShowBackdrop { get; set; } = true;
     [Parameter] public EventCallback OnShow { get; set; }
