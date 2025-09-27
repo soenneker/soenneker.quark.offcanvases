@@ -6,27 +6,38 @@
 @inherits Soenneker.Quark.Element
 @inject IOffcanvasInterop OffcanvasInterop
 
-<CascadingValue Value="@this" IsFixed="true">
-    <Div id="@Id"  Class="@GetOffcanvasClasses()" Style="@GetOffcanvasStyles()" tabindex="-1" role="dialog" aria-modal="true" @attributes="BuildAttributes()">
+<CascadingValue Value="@this" IsFixed="true" >
+    <Div id="@Id" Class="@GetOffcanvasClasses()" Style="@GetOffcanvasStyles()" tabindex="-1" role="dialog" aria-modal="true" @attributes="BuildAttributes()" >
         @ChildContent
     </Div>
     @if (ShowBackdrop && _backdropVisible)
-        {
-    <Div Class="@GetBackdropClass()" OnClick="HandleBackdropClick"></Div>
-        }
+    {
+        <Div Class="@GetBackdropClass()" OnClick="HandleBackdropClick" ></Div>
+    }
 </CascadingValue>
 
 @code {
-	public override string? Name { get; set; } = "Offcanvas";
+    public override string? Name { get; set; } = "Offcanvas";
 
     private static readonly TimeSpan _transitionDuration = TimeSpan.FromMilliseconds(350);
 
-    [Parameter] public PlacementType Placement { get; set; } = PlacementType.End;
-    [Parameter] public bool AllowScroll { get; set; }
-    [Parameter] public bool ShowBackdrop { get; set; } = true;
-    [Parameter] public EventCallback OnShow { get; set; }
-    [Parameter] public EventCallback OnHide { get; set; }
-    [Parameter] public EventCallback OnBackdropClick { get; set; }
+    [Parameter]
+    public PlacementType Placement { get; set; } = PlacementType.End;
+
+    [Parameter]
+    public bool AllowScroll { get; set; }
+
+    [Parameter]
+    public bool ShowBackdrop { get; set; } = true;
+
+    [Parameter]
+    public EventCallback OnShow { get; set; }
+
+    [Parameter]
+    public EventCallback OnHide { get; set; }
+
+    [Parameter]
+    public EventCallback OnBackdropClick { get; set; }
 
     private bool _initialized;
     private bool _active;
@@ -112,7 +123,10 @@
             {
                 await OffcanvasInterop.Open(Id!, token);
             }
-            catch { /* ignore */ }
+            catch
+            {
+                /* ignore */
+            }
         }
 
         await InvokeAsync(StateHasChanged);
@@ -152,7 +166,10 @@
                 {
                     await OffcanvasInterop.Close(Id!, token);
                 }
-                catch { /* ignore */ }
+                catch
+                {
+                    /* ignore */
+                }
             }
         }, OnHide, token);
     }
@@ -180,7 +197,13 @@
 
         if (!_transitionCancellation.IsCancellationRequested)
         {
-            try { _transitionCancellation.Cancel(); } catch { }
+            try
+            {
+                _transitionCancellation.Cancel();
+            }
+            catch
+            {
+            }
         }
 
         _transitionCancellation.Dispose();
@@ -229,8 +252,12 @@
                 await OffcanvasInterop.Destroy(Id!);
             }
         }
-        catch { /* ignore */ }
+        catch
+        {
+            /* ignore */
+        }
 
         CancelActiveTransition();
     }
+
 }
